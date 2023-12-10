@@ -96,7 +96,7 @@ const BreedModal = (props) => {
       </Modal.Header>
       <Modal.Body>
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-5">
             <img src={props.breed.image?.url} className="card-img-top" alt={props.breed.name} />
           </div>
           <div className="col-md-6">
@@ -105,6 +105,7 @@ const BreedModal = (props) => {
 
             <p><strong>Temperament: </strong>{props.breed.temperament}</p>
             <p><strong>Origin: </strong>{props.breed.origin}</p>
+            <p><strong>Weight: </strong>{props.breed.weight.metric} Kg</p>
             <p><strong>Life Span: </strong>{props.breed.life_span} Years</p>
 
             <p><strong>Link: </strong><a href={props.breed.wikipedia_url}>{props.breed.wikipedia_url}</a></p>
@@ -122,7 +123,7 @@ const BreedModal = (props) => {
           </div>
           <div className="col-md-6">
             <Scores label="Health Issues" score={props.breed.health_issues} />
-            <Scores label="Intelligence" score={props.breed.intellignece} />
+            <Scores label="Intelligence" score={props.breed.intelligence} />
             <Scores label="Shedding Level" score={props.breed.shedding_level} />
             <Scores label="Social Needs" score={props.breed.social_needs} />
             <Scores label="Stranger Friendly" score={props.breed.stranger_friendly} />
