@@ -1,0 +1,55 @@
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Alegreya', serif;
+}
+
+p,
+small {
+    font-family: 'Alegreya', serif;
+    font-family: 'Alegreya Sans', sans-serif;
+}
+
+.nav-item.active {
+    font-weight: bold;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.favorite-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: rgb(244, 37, 37);
+    font-size: 50px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.favorite-icon:hover {
+    color: white;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+  }
+
+.delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: rgb(244, 37, 37);
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.delete-icon:hover {
+    color: white;
+}
