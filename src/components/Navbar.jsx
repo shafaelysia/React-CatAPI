@@ -36,7 +36,7 @@ const Navbar = () => {
                             style={linkStyle}
                             onClick={() => setCurrentPage("/liked")}
                         >
-                            <p className="nav-link">Favorites</p>
+                            <p className="nav-link">Liked Images</p>
                         </Link>
                     </li>
                 </ul>
