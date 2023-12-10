@@ -67,7 +67,7 @@ const Favorites = () => {
             title: "Successfully Deleted!",
           });
 
-          setTimeout(() => setSwalProps({}), 1000);
+          setTimeout(() => setSwalProps({}), 5000);
         })
         .catch((error) => {
           setSwalProps({

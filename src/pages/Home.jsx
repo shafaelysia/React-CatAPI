@@ -41,7 +41,7 @@ const Home = () => {
           title: "Successfully Added to Liked Images!"
         });
 
-        setTimeout(() => setSwalProps({}), 1000);
+        setTimeout(() => setSwalProps({}), 5000);
       })
       .catch((error) => {
         setSwalProps({
