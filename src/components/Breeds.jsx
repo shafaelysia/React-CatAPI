@@ -24,6 +24,10 @@ const Breeds = () => {
     setSearchTerm(event.target.value);
   };
 
+  const filteredBreeds = breedsData?.filter((breed) =>
+    breed.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   const openModal = (breed) => {
     setSelectedBreed(breed);
   };
@@ -46,7 +50,12 @@ const Breeds = () => {
           />
           <span
             className="material-symbols-outlined"
-            style={{ fontSize: '2rem', display: 'flex', alignItems: 'center', marginLeft: '5px' }}
+            style={{
+              fontSize: '2rem',
+              display: 'flex',
+              alignItems: 'center',
+              marginLeft: '5px',
+            }}
           >
             Search
           </span>
@@ -54,7 +63,7 @@ const Breeds = () => {
       </div>
 
       <div className="d-flex flex-wrap justify-content-around">
-        {breedsData?.map((breed, index) => (
+        {filteredBreeds?.map((breed, index) => (
           <div
             className="card bg-gray mt-5 shadow rounded-4"
             key={index}
@@ -71,11 +80,7 @@ const Breeds = () => {
       </div>
 
       {selectedBreed && (
-        <BreedModal
-          show={true}
-          onHide={closeModal}
-          breed={selectedBreed}
-        />
+        <BreedModal show={true} onHide={closeModal} breed={selectedBreed} />
       )}
     </div>
   );

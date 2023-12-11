@@ -22,7 +22,7 @@ const Navbar = () => {
                         <span className="material-symbols-outlined">pets</span> CatPedia
                     </h2>
                 </Link>
-                <ul class="nav nav-underline">
+                <ul className="nav nav-underline">
                     <li className={`nav-item ${currentPage === "/" && "active"}`}>
                         <Link to="/" style={linkStyle} onClick={() => setCurrentPage("/")}>
                             <p className="nav-link" aria-current="page">
