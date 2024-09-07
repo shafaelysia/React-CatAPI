@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { catOptions } from '../options';
 import { Modal } from 'react-bootstrap';
 import Scores from '../components/Scores'
 
@@ -11,7 +10,7 @@ const Breeds = () => {
 
   const fetchData = () => {
     axios
-      .get('https://api.thecatapi.com/v1/breeds', catOptions)
+      .get('https://api.thecatapi.com/v1/breeds')
       .then((response) => setBreedsData(response.data))
       .catch((error) => console.log(error));
   };
@@ -70,7 +69,10 @@ const Breeds = () => {
             style={{ width: '20rem', cursor: 'pointer' }}
             onClick={() => openModal(breed)}
           >
-            <img src={breed.image?.url} className="card-img-top" alt={breed.name} />
+            {breed.reference_image_id && (
+              <img src={`https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`} className="card-img-top" alt={breed.name} />
+            )}
+            {/* <img src={breed.image?.url} className="card-img-top" alt={breed.name} /> */}
             <div className="card-body">
               <h5 className="card-title mt-3">{breed.name}</h5>
               <p className="card-text">{breed.description}</p>
@@ -102,7 +104,10 @@ const BreedModal = (props) => {
       <Modal.Body>
         <div className="row">
           <div className="col-md-5">
-            <img src={props.breed.image?.url} className="card-img-top" alt={props.breed.name} />
+            {props.breed.reference_image_id && (
+              <img src={`https://cdn2.thecatapi.com/images/${props.breed.reference_image_id}.jpg`} className="card-img-top" alt={props.breed.name} />
+            )}
+            {/* <img src={props.breed.image?.url} className="card-img-top" alt={props.breed.name} /> */}
           </div>
           <div className="col-md-6">
             <p><strong>Description:</strong></p>

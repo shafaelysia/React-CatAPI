@@ -4,7 +4,6 @@ import { Carousel } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Breeds from '../components/Breeds';
 import '../index.css';
-import { catAddFavoriteOptions } from '../options';
 import SweetAlert2 from 'react-sweetalert2';
 
 const Home = () => {
@@ -14,7 +13,7 @@ const Home = () => {
   const fetchData = () => {
     axios
       .get("https://api.thecatapi.com/v1/images/search?limit=10")
-      .then((response) => setCatData((prevCatData) => response.data))
+      .then((response) => setCatData((response.data)))
       .catch((error) => console.log(error));
   };
 
@@ -33,7 +32,11 @@ const Home = () => {
     axios.post(
       "https://api.thecatapi.com/v1/favourites",
       data,
-      catAddFavoriteOptions
+      {
+        headers: {
+          "x-api-key": process.env.REACT_APP_APIKEY
+        }
+      }
     )
       .then((response) => {
         setSwalProps({

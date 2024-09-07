@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { catOptions, catDeleteFavoriteOptions } from '../options';
 import SweetAlert2 from 'react-sweetalert2';
 
 const Favorites = () => {
@@ -11,8 +10,12 @@ const Favorites = () => {
   const fetchData = () => {
     axios
       .get(
-        "https://api.thecatapi.com/v1/favourites?limit=10&sub_id=user-123",
-        catOptions
+        "https://api.thecatapi.com/v1/favourites?sub_id=user-123",
+        {
+          headers: {
+            "x-api-key": process.env.REACT_APP_APIKEY
+          }
+        }
       )
       .then((response) => setFavorites(response.data))
       .catch((error) => console.log(error));
@@ -21,7 +24,13 @@ const Favorites = () => {
   const populateArray = async () => {
     if (favorites) {
       const catPromises = favorites.map((favorite) =>
-        axios.get(`https://api.thecatapi.com/v1/images/${favorite.image_id}`, catOptions)
+        axios.get(`https://api.thecatapi.com/v1/images/${favorite.image_id}`,
+          {
+            headers: {
+              "x-api-key": process.env.REACT_APP_APIKEY
+            }
+          }
+        )
       );
 
       try {
@@ -58,7 +67,14 @@ const Favorites = () => {
       const favoriteId = matchingFavorite.id;
 
       axios
-        .delete(`https://api.thecatapi.com/v1/favourites/${favoriteId}`, catDeleteFavoriteOptions)
+        .delete(
+          `https://api.thecatapi.com/v1/favourites/${favoriteId}`,
+          {
+            headers: {
+              "x-api-key": process.env.REACT_APP_APIKEY
+            }
+          }
+        )
         .then((response) => {
           setCatData((prevCatData) => prevCatData.filter((cat) => cat.id !== catId));
 
